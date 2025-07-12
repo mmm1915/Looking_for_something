@@ -1,7 +1,7 @@
 # Screen Transition Diagram (画面遷移図)
 
 ### 画面遷移図
-Figma：https://www.figma.com/design/KnhFLc0EHkw9mvEy4w2im8/Looking_for_something?node-id=0-1&p=f&t=1bLbITFvK9P6OSAH-0
+Figma：https://www.figma.com/design/70Qn3RsOYg5l735r0z26zM/Looking_for_something--%E3%83%A2%E3%83%8E%E3%83%89%E3%82%B3-?node-id=14-245&t=rhpsCs5XfumOxO7n-1
 
 ### READMEに記載した機能
 - [x] 新規ユーザー登録
