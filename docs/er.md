@@ -26,3 +26,26 @@ URL： https://drive.google.com/file/d/1g2E0DRCjGlqOubQnbsRZi2pY8bHKfV4m/view?us
 - [x] カラムの型は記載されているか？
 - [x] STIは使用しないER図になっているか？
 - [x] Postsテーブルにpoast_nameのように"テーブル名+カラム名"を付けていないか？
+
+### 各テーブルについて
+
+#### usersテーブル
+ユーザー情報を管理する。
+- email:ログイン用のメールアドレス
+- encrypted_password:ハッシュ化されたパスワード
+- nickname:ランダムに表示されるニックネームを管理
+
+#### postsテーブル
+投稿された探し物を管理する。
+- item_name:探している物の名称
+- search_place:探している場所
+- status:探し物のステータス（探している/見つかった）
+- found_place:見つけた場所
+
+#### nicknamesテーブル
+投稿時にnicknamesテーブルからランダムなニックネームを1つ選び、usersテーブルのnicknameカラムにコピーして保存する
+- nickname:ニックネームの文字列
+
+#### hintsテーブル
+Sidekiq+wheneverで定期投稿される「ヒント」のデータ管理
+- body:ヒントの本文
