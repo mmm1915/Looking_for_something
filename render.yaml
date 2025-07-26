@@ -6,6 +6,6 @@ services:
       bundle install
       RAILS_ENV=production bundle exec rails assets:precompile
       RAILS_ENV=production bundle exec rails assets:clean
-      RAILS_ENV=production bundle exec rails db:migrate
     startCommand: bundle exec puma -t 5:5 -p $PORT
     plan: free
+    releaseCommand: RAILS_ENV=production bundle exec rails db:migrate
