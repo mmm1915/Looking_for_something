@@ -15,7 +15,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
+  host: <%= ENV["DATABASE_HOST"] || "db" %>
   username: user
   port: 5432
   password: <%= ENV["DATABASE_PASSWORD"] || "password" %>
@@ -85,9 +85,11 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: app_production
-    username: app
-    password: <%= ENV["APP_DATABASE_PASSWORD"] %>
+    host: <%= ENV["DATABASE_HOST"] %>
+    database: <%= ENV["DATABASE_NAME"] %>
+    username: <%= ENV["DATABASE_USER"] %>
+    password: <%= ENV["DATABASE_PASSWORD"] %>
+    port: <%= ENV["DATABASE_PORT"] || 5432 %>
   cache:
     <<: *primary_production
     database: app_production_cache
