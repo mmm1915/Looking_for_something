@@ -2,6 +2,10 @@ services:
   - type: web
     name: Looking_for_something
     env: ruby
-    buildCommand: ./render-build.sh
+    buildCommand: |
+      bundle install
+      RAILS_ENV=production bundle exec rails assets:precompile
+      RAILS_ENV=production bundle exec rails assets:clean
+      RAILS_ENV=production bundle exec rails db:migrate
     startCommand: bundle exec puma -t 5:5 -p $PORT
     plan: free
