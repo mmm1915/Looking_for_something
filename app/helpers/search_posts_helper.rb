@@ -1,0 +1,2 @@
+module SearchPostsHelper
+end

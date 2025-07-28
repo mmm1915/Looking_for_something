@@ -1,0 +1,10 @@
+<h1>投稿一覧</h1>
+
+<% @search_posts.each do |post| %>
+  <div>
+    <h2><%= search_post.title %></h2>
+    <p><%= search_post.body %></p>
+  </div>
+<% end %>
+
+<%= link_to "新しい投稿を作る", new_search_post_path %>
