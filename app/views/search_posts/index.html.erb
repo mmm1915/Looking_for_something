@@ -2,9 +2,11 @@
 
 <% @search_posts.each do |post| %>
   <div>
-    <h2><%= search_post.title %></h2>
-    <p><%= search_post.body %></p>
+    <p>探し物: <%= post.item_name %></p>
+    <p>探している場所 <%= post.search_place %></p>
+    <% if post.user == current_user %>
+      <%= link_to '編集', edit_search_post_path(post) %> |
+      <%= link_to '削除', search_post_path(post), method: :delete, data: { confilm: '削除してよろしいですか？' } %>
+    <% end %>
   </div>
 <% end %>
-
-<%= link_to "新しい投稿を作る", new_search_post_path %>

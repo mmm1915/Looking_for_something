@@ -1,17 +1,17 @@
 <h1>新しい投稿</h1>
 
-<%= form_with model: @post, local: true do |form| %>
+<%= form_with model: @search_post, url: search_posts_path, local: true do |f| %>
   <div>
-    <%= form.label :title, "タイトル" %><br>
-    <%= form.text_field :title %>
+    <%= f.label :item_name, "探し物" %><br>
+    <%= f.text_field :item_name %>
   </div>
 
   <div>
-    <%= form.label :body, "本文" %><br>
-    <%= form.text_area :body %>
+    <%= f.label :search_place, "探している場所(詳細な場所を記載してください)" %><br>
+    <%= f.text_field :search_place %>
   </div>
 
   <div>
-    <%= form.submit "投稿する" %>
+    <%= f.submit "投稿する" %>
   </div>
 <% end %>
