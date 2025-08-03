@@ -1,5 +1,4 @@
 <% if user_signed_in? %>
-  <p>ようこそ、<%= current_user.nickname %>さん！</p>
   <%= link_to "マイページ", user_path(current_user) %> |
   <%= link_to "投稿する", new_search_post_path, class: "btn-success" %> |
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -11,8 +10,8 @@
 
 <hr>
 
-<% if @posts.present? %>
-  <% @posts.each do |post| %>
+<% if @search_posts.present? %>
+  <% @search_posts.each do |post| %>
     <div class="card mb-3">
       <div class="card-body">
         <%= truncate(post.item_name, length: 100) %></p>
