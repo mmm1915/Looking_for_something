@@ -24,7 +24,7 @@ class SearchPostsController < ApplicationController
   end
 
   def update
-    if search_post.update(post_params)
+    if @search_post.update(post_params)
       redirect_to search_posts_path, notice:"投稿を更新しました"
     else
       render :edit
@@ -34,6 +34,10 @@ class SearchPostsController < ApplicationController
   def destroy
     @search_post.destroy
     redirect_to search_posts_path, notice: "投稿を削除しました"
+  end
+
+  def show
+    @search_post = SearchPost.find(params[:id])
   end
 
   private
