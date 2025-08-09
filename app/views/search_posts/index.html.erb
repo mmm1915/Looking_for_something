@@ -1,7 +1,7 @@
 <% @search_posts.each do |post| %>
   <div>
-    <p>探し物: <%= post.item_name %></p>
-    <p>探している場所: <%= post.search_place %></p>
+    <p><%= post.user.nickname %>は</p>
+    <p><%= post.item_name %>を探しています</p>
     <% if post.user == current_user %>
       <%= link_to '編集', edit_search_post_path(post) %> |
       <%= link_to '削除', search_post_path(post),
