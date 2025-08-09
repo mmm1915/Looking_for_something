@@ -1,14 +1,9 @@
-<h1>新しい投稿</h1>
+<h3>何をお探しですか？</h3>
 
 <%= form_with model: @search_post, url: search_posts_path, local: true do |f| %>
   <div>
     <%= f.label :item_name, "探し物" %><br>
     <%= f.text_field :item_name %>
-  </div>
-
-  <div>
-    <%= f.label :search_place, "探している場所(詳細な場所を記載してください)" %><br>
-    <%= f.text_field :search_place %>
   </div>
 
   <div>

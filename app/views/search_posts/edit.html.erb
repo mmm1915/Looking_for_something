@@ -7,11 +7,6 @@
   </div>
 
   <div>
-    <%= f.label :search_place, "探している場所" %>
-    <%= f.text_field :search_place %>
-  </div>
-
-  <div>
     <%= f.label :status, "ステータス" %>
     <%= f.select :status, SearchPost.statuses.keys.map { |w| [w.humanize, w] } %>
   </div>
