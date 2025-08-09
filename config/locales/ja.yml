@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    attributes:
+      search_post:
+        status:
+          searching: まだ探している
+          found: 見つけた！

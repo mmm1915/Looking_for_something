@@ -1,4 +1,4 @@
-<h2>投稿の編集</h2>
+<h2>見つかりましたか？</h2>
 
 <%= form_with model: @search_post, local: true do |f| %>
   <div>
@@ -8,7 +8,7 @@
 
   <div>
     <%= f.label :status, "ステータス" %>
-    <%= f.select :status, SearchPost.statuses.keys.map { |w| [w.humanize, w] } %>
+    <%= f.select :status, SearchPost.statuses.keys.map { |w| [I18n.t("activerecord.attributes.search_post.status.#{w}"), w] } %>
   </div>
 
   <div>
