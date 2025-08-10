@@ -1,8 +1,12 @@
 require "test_helper"
 
 class SearchPostsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers  # これも念のため追記
+
   setup do
-    @search_post = search_posts(:one) # fixturesを利用している場合
+    @user = users(:one) # fixtures/users.yml のユーザー名に合わせる
+    sign_in @user
+    @search_post = search_posts(:one) # 編集系テストで使う既存投稿があれば
   end
 
   test "should get index" do
@@ -16,8 +20,8 @@ class SearchPostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create search_post" do
-    post search_posts_path, params: { search_post: { item_name: "test item", status: 0 } }
-    assert_response :redirect
+    post search_posts_path, params: { search_post: { item_name: "test", status: 0 } }
+    assert_redirected_to root_path
   end
 
   test "should get edit" do
@@ -26,7 +30,7 @@ class SearchPostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update search_post" do
-    patch search_post_path(@search_post), params: { search_post: { item_name: "updated item" } }
-    assert_response :redirect
+    patch search_post_path(@search_post), params: { search_post: { item_name: "updated" } }
+    assert_redirected_to root_path
   end
 end
