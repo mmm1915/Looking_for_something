@@ -20,7 +20,7 @@ class SearchPostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create search_post" do
-    post search_posts_path, params: { search_post: { item_name: "test", status: 0 } }
+    post search_posts_path, params: { search_post: { item_name: "test item", status: "searching" } }
     assert_redirected_to root_path
   end
 
