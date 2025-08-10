@@ -1,7 +1,7 @@
 class SearchPostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_search_post, only: [:edit, :update, :destroy]
-  before_action :authorize_user!, only: [:edit, :update, :destroy]
+  before_action :set_search_post, only: [ :edit, :update, :destroy ]
+  before_action :authorize_user!, only: [ :edit, :update, :destroy ]
 
   def index
     @search_posts = SearchPost.includes(:user).all
@@ -25,7 +25,7 @@ class SearchPostsController < ApplicationController
 
   def update
     if @search_post.update(post_params)
-      redirect_to root_path, notice:"投稿を更新しました"
+      redirect_to root_path, notice: "投稿を更新しました"
     else
       render :edit
     end

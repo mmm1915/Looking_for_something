@@ -1,28 +1,32 @@
 require "test_helper"
 
 class SearchPostsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @search_post = search_posts(:one) # fixturesを利用している場合
+  end
+
   test "should get index" do
-    get search_posts_index_url
+    get search_posts_path
     assert_response :success
   end
 
   test "should get new" do
-    get search_posts_new_url
+    get new_search_post_path
     assert_response :success
   end
 
-  test "should get create" do
-    get search_posts_create_url
-    assert_response :success
+  test "should create search_post" do
+    post search_posts_path, params: { search_post: { item_name: "test item", status: 0 } }
+    assert_response :redirect
   end
 
   test "should get edit" do
-    get search_posts_edit_url
+    get edit_search_post_path(@search_post)
     assert_response :success
   end
 
-  test "should get update" do
-    get search_posts_update_url
-    assert_response :success
+  test "should update search_post" do
+    patch search_post_path(@search_post), params: { search_post: { item_name: "updated item" } }
+    assert_response :redirect
   end
 end
