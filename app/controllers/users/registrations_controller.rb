@@ -1,5 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_account_update_params, only: [:update]
+  def new
+    build_resource
+    resource.nickname = ::Faker::JapaneseMedia::StudioGhibli.unique.character
+    respond_with resource
+  end
 
   def create
     build_resource(sign_up_params)
@@ -28,11 +32,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def sign_up_params
     params.require(:user).permit(:email, :password, :password_confirmation, :nickname)
-  end
-
-  protected
-
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname])
   end
 end
