@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :search_posts
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
 end
