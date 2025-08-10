@@ -1,11 +1,20 @@
-<% @search_posts.each do |post| %>
-  <div>
-    <p><%= post.user.nickname %>は</p>
-    <p><%= post.item_name %>を探しています</p>
-    <% if post.user == current_user %>
-      <%= link_to '編集', edit_search_post_path(post) %> |
-      <%= link_to '削除', search_post_path(post),
-    data: { turbo_method: :delete, turbo_confirm: '削除してよろしいですか？' } %>
-    <% end %>
-  </div>
+<% if @search_posts.present? %>
+  <% @search_posts.each do |post| %>
+    <div>
+      <p><%= t('search_posts.user_is_searching', nickname: post.user.nickname) %></p>
+      <p><%= t('search_posts.item_name', item_name: post.item_name) %></p>
+      <p><%= t('search_posts.status') %>: <%= t("search_posts.statuses.#{post.status}") %></p>
+      <p>
+        <%= t('search_posts.found_place') %>:
+        <%= post.found_place.presence || t('search_posts.not_found_yet') %>
+      </p>
+      <% if post.user == current_user %>
+        <%= link_to t('search_posts.edit'), edit_search_post_path(post) %> |
+        <%= link_to t('search_posts.delete'), search_post_path(post),
+          data: { turbo_method: :delete, turbo_confirm: t('search_posts.delete_confirm') } %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t('search_posts.no_results') %></p>
 <% end %>

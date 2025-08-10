@@ -77,3 +77,18 @@ ja:
       not_saved: "保存できませんでした。"
       blank: "を入力してください。"
       taken: "はすでに存在します。"
+
+  search_posts:
+    user_is_searching: "%{nickname}は"
+    item_name: "%{item_name}を探しています"
+    status: "ステータス"
+    statuses:
+      searching: "探している"
+      found: "見つけた"
+    found_place: "見つけた場所"
+    not_found_yet: "まだ見つかっていません"
+    edit: "編集"
+    delete: "削除"
+    delete_confirm: "削除してよろしいですか？"
+    no_results: "検索結果がありません"
+

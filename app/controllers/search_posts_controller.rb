@@ -4,7 +4,8 @@ class SearchPostsController < ApplicationController
   before_action :authorize_user!, only: [ :edit, :update, :destroy ]
 
   def index
-    @search_posts = SearchPost.includes(:user).all
+    @q = SearchPost.ransack(params[:q])
+    @search_posts = @q.result.includes(:user)
   end
 
   def new
