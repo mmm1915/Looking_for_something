@@ -22,8 +22,20 @@ ja:
     attributes:
       search_post:
         status:
-          searching: まだ探している
-          found: 見つけた！
+          searching: "まだ探している"
+          found: "見つけた！"
+      user:
+        nickname: "ニックネーム"
+    errors:
+      models:
+        user:
+          attributes:
+            current_password:
+              invalid: "が正しくありません"
+            nickname:
+              blank: "を入力してください。"
+              taken: "はすでに使われています。"
+
 
   devise:
     sessions:
@@ -59,3 +71,9 @@ ja:
         cancel_account_confirm: "本当にアカウントを削除してもよろしいですか？"
         back: "戻る"
         unhappy_text: "アカウントを削除しますか？"
+
+  errors:
+    messages:
+      not_saved: "保存できませんでした。"
+      blank: "を入力してください。"
+      taken: "はすでに存在します。"

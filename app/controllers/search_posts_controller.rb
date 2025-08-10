@@ -33,7 +33,7 @@ class SearchPostsController < ApplicationController
 
   def destroy
     @search_post.destroy
-    redirect_to search_posts_path, notice: "投稿を削除しました"
+    redirect_to root_path, notice: "投稿を削除しました"
   end
 
   def show
