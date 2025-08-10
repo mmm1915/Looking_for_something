@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: "users/registrations"
   }
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :search_posts
-  resources :users, only: [:show]
+  resources :users, only: [ :show, :edit, :update ]
 end

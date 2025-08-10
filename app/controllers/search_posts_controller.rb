@@ -1,7 +1,7 @@
 class SearchPostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_search_post, only: [:edit, :update, :destroy]
-  before_action :authorize_user!, only: [:edit, :update, :destroy]
+  before_action :set_search_post, only: [ :edit, :update, :destroy ]
+  before_action :authorize_user!, only: [ :edit, :update, :destroy ]
 
   def index
     @search_posts = SearchPost.includes(:user).all
@@ -14,7 +14,7 @@ class SearchPostsController < ApplicationController
   def create
     @search_post = current_user.search_posts.build(post_params)
     if @search_post.save
-      redirect_to search_posts_path, notice: "投稿を作成しました"
+      redirect_to root_path, notice: "投稿しました"
     else
       render :new
     end
@@ -25,7 +25,7 @@ class SearchPostsController < ApplicationController
 
   def update
     if @search_post.update(post_params)
-      redirect_to search_posts_path, notice:"投稿を更新しました"
+      redirect_to root_path, notice: "投稿を更新しました"
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class SearchPostsController < ApplicationController
   private
 
   def post_params
-    params.require(:search_post).permit(:item_name, :search_place, :status, :found_place)
+    params.require(:search_post).permit(:item_name, :status, :found_place)
   end
 
   def set_search_post
