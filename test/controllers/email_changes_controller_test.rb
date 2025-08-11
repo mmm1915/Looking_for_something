@@ -1,18 +1,20 @@
 require "test_helper"
 
 class EmailChangesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   def setup
     @user = users(:one)
     sign_in @user
   end
 
   test "should get edit" do
-    get email_changes_edit_url
+    get edit_email_change_path
     assert_response :success
   end
 
   test "should get update" do
-    get email_changes_update_url
-    assert_response :success
+    patch email_change_path, params: { user: { email: "new_email@example.com" } }
+    assert_redirected_to root_path
   end
 end
