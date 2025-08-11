@@ -35,7 +35,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.save(validate: false)
       true
     else
-      resource.update_with_password(params) 
+      resource.update_with_password(params)
     end
   end
 
