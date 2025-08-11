@@ -1,0 +1,18 @@
+<h2>メールアドレス変更</h2>
+
+<%= form_with model: current_user, url: email_change_path, method: :patch, local: true do |f| %>
+  <% if flash[:alert] %>
+    <p style="color:red;"><%= flash[:alert] %></p>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email, "新しいメールアドレス" %><br>
+    <%= f.email_field :email, autocomplete: "email", required: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "確認メールを送信する" %>
+  </div>
+<% end %>
+
+<%= link_to "戻る", mypage_path %>

@@ -9,13 +9,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :email, t('devise.registrations.edit.email', default: 'メールアドレス（変更したい場合は新しいアドレスを入力）') %><br />
-    <%= f.email_field :email, autocomplete: "email", value: resource.unconfirmed_email || resource.email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password, t('devise.registrations.edit.current_password') %>
-    <i><%= t('devise.registrations.edit.current_password_hint') %></i><br />
+    <%= f.label :current_password, t('devise.registrations.edit.current_password') %><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
@@ -24,5 +18,11 @@
   </div>
 <% end %>
 
-</br>
+<br>
 <%= link_to t('devise.registrations.edit.back'), :back %>
+
+<p>
+  メールアドレスを変更したい場合は
+  <%= link_to 'メールアドレス変更用ページへ', edit_email_change_path %> <!-- 自作ルート -->
+  から手続きしてください。
+</p>

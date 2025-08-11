@@ -40,6 +40,10 @@ ja:
 
 
   devise:
+    failure:
+      user:
+        already_authenticated: "すでにログインしています。"
+      already_authenticated: "すでにログインしています。"
     sessions:
       new:
         log_in: "ログイン"
@@ -62,7 +66,7 @@ ja:
     registrations:
       edit:
         title: "ユーザー情報編集"
-        email: "新しいメールアドレス"
+        email: "メールアドレス"
         password: "パスワード"
         password_hint: "(変更しない場合は空のままにしてください)"
         password_confirmation: "パスワード（確認）"
