@@ -9,30 +9,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :email, t('devise.registrations.edit.email') %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div><%= t('devise.registrations.edit.email') %>の確認待ち: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password, t('devise.registrations.edit.password') %> 
-    <i><%= t('devise.registrations.edit.password_hint') %></i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> <%= t('devise.passwords.minimum_characters', default: '文字以上') %></em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, t('devise.registrations.edit.password_confirmation') %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
     <%= f.label :current_password, t('devise.registrations.edit.current_password') %> 
     <i><%= t('devise.registrations.edit.current_password_hint') %></i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
@@ -42,5 +18,8 @@
     <%= f.submit t('devise.registrations.edit.update_button') %>
   </div>
 <% end %>
+</br>
+<%= link_to 'メールアドレス変更', new_user_confirmation_path %><br>
+<%= link_to 'パスワード変更', new_user_password_path %>
 </br>
 <%= link_to t('devise.registrations.edit.back'), :back %>

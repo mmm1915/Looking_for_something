@@ -1,5 +1,7 @@
 <% if @search_posts.present? %>
   <% @search_posts.each do |post| %>
+    <div class="card mb-3 post-card" >
+      <div class="card-body">
     <div>
       <p><%= t('search_posts.user_is_searching', nickname: post.user.nickname) %></p>
       <p><%= t('search_posts.item_name', item_name: post.item_name) %></p>

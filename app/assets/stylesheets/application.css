@@ -9,7 +9,7 @@
  * Consider organizing styles into separate files for maintainability.
  */
 .post-card {
-  border: 4px solid #ffa8ff;
+  border: 15px solid #ffa8ff;
   background-color: #fff;
   padding: 15px;
   border-radius: 8px;

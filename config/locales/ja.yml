@@ -71,6 +71,11 @@ ja:
         cancel_account_confirm: "本当にアカウントを削除してもよろしいですか？"
         back: "戻る"
         unhappy_text: "アカウントを削除しますか？"
+    confirmations:
+      new:
+        title: "確認メールの送信"
+        email: "メールアドレス"
+        resend_button: "確認メールを送信する"
 
   errors:
     messages:
@@ -84,7 +89,7 @@ ja:
     status: "ステータス"
     statuses:
       searching: "探している"
-      found: "見つけた"
+      found: "見つけた！"
     found_place: "見つけた場所"
     not_found_yet: "まだ見つかっていません"
     edit: "編集"
