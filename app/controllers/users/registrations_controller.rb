@@ -8,7 +8,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     resource.nickname = ::Faker::JapaneseMedia::StudioGhibli.unique.character if resource.nickname.blank?
-
     resource.save
     yield resource if block_given?
     if resource.persisted?
@@ -28,9 +27,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  protected
+
+  def update_resource(resource, params)
+    if params[:email] && params[:email] != resource.email
+      resource.unconfirmed_email = params[:email]
+      resource.save(validate: false)
+      true
+    else
+      resource.update_with_password(params)
+    end
+  end
+
   private
 
   def sign_up_params
     params.require(:user).permit(:email, :password, :password_confirmation, :nickname)
+  end
+
+  def account_update_params
+    params.require(:user).permit(:email, :nickname, :current_password, :password, :password_confirmation)
   end
 end
