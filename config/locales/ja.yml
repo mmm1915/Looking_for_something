@@ -35,6 +35,8 @@ ja:
             nickname:
               blank: "を入力してください。"
               taken: "はすでに使われています。"
+            email:
+              already_confirmed: "はすでに確認済みです"
 
 
   devise:
@@ -82,6 +84,7 @@ ja:
       not_saved: "保存できませんでした。"
       blank: "を入力してください。"
       taken: "はすでに存在します。"
+      already_confirmed: "はすでに確認済みです"
 
   search_posts:
     user_is_searching: "%{nickname}は"
