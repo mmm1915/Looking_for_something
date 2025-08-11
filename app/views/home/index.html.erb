@@ -17,6 +17,9 @@
       </div>
     </div>
   <% end %>
+
+  <%= paginate @search_posts %>
+
 <% else %>
   <p><%= t('home.posts.no_posts') %></p>
 <% end %>
