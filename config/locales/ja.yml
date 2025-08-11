@@ -22,8 +22,22 @@ ja:
     attributes:
       search_post:
         status:
-          searching: まだ探している
-          found: 見つけた！
+          searching: "まだ探している"
+          found: "見つけた！"
+      user:
+        nickname: "ニックネーム"
+    errors:
+      models:
+        user:
+          attributes:
+            current_password:
+              invalid: "が正しくありません"
+            nickname:
+              blank: "を入力してください。"
+              taken: "はすでに使われています。"
+            email:
+              already_confirmed: "はすでに確認済みです"
+
 
   devise:
     sessions:
@@ -59,3 +73,30 @@ ja:
         cancel_account_confirm: "本当にアカウントを削除してもよろしいですか？"
         back: "戻る"
         unhappy_text: "アカウントを削除しますか？"
+    confirmations:
+      new:
+        title: "確認メールの送信"
+        email: "メールアドレス"
+        resend_button: "確認メールを送信する"
+
+  errors:
+    messages:
+      not_saved: "保存できませんでした。"
+      blank: "を入力してください。"
+      taken: "はすでに存在します。"
+      already_confirmed: "はすでに確認済みです"
+
+  search_posts:
+    user_is_searching: "%{nickname}は"
+    item_name: "%{item_name}を探しています"
+    status: "ステータス"
+    statuses:
+      searching: "探している"
+      found: "見つけた！"
+    found_place: "見つけた場所"
+    not_found_yet: "まだ見つかっていません"
+    edit: "編集"
+    delete: "削除"
+    delete_confirm: "削除してよろしいですか？"
+    no_results: "検索結果がありません"
+

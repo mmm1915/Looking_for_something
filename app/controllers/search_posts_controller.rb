@@ -4,7 +4,8 @@ class SearchPostsController < ApplicationController
   before_action :authorize_user!, only: [ :edit, :update, :destroy ]
 
   def index
-    @search_posts = SearchPost.includes(:user).all
+    @q = SearchPost.ransack(params[:q])
+    @search_posts = @q.result.includes(:user)
   end
 
   def new
@@ -33,7 +34,7 @@ class SearchPostsController < ApplicationController
 
   def destroy
     @search_post.destroy
-    redirect_to search_posts_path, notice: "投稿を削除しました"
+    redirect_to root_path, notice: "投稿を削除しました"
   end
 
   def show

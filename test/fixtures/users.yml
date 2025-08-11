@@ -6,8 +6,13 @@
 #
 one:
   email: "one@example.com"
-# column: value
-#
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password123') %>
+  confirmed_at: <%= Time.now %>
+  nickname: "oneuser"
+
 two:
   email: "two@example.com"
-# column: value
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password456') %>
+  confirmed_at: <%= Time.now %>
+  nickname: "twouser"
+  

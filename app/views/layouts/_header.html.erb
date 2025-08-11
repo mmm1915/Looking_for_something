@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+  <%= link_to t('home.welcome.mypage'), user_path(current_user) %> |
+  <%= link_to t('home.welcome.new_post'), new_search_post_path, class: "btn-success" %> |
+  <%= link_to t('home.welcome.logout'), destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: t('home.welcome.logout_confirm') } %>
+  
+  <%= search_form_for @q, url: search_posts_path, method: :get, class: "header-search-form" do |f| %>
+    <%= f.search_field :user_nickname_cont, placeholder: "ニックネーム" %>
+
+    <%= f.search_field :item_name_cont, placeholder: "探し物" %>
+
+    <%= f.search_field :found_place_cont, placeholder: "見つけた場所" %>
+
+    <%= f.submit "検索" %>
+  <% end %>
+<% else %>
+  <p><%= t('home.welcome.login_prompt') %></p>
+  <%= link_to t('home.welcome.login'), new_user_session_path, class: "btn btn-primary" %> |
+  <%= link_to t('home.welcome.signup'), new_user_registration_path, class: "btn btn-success" %>
+<% end %>
