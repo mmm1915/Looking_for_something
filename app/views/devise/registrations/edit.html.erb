@@ -9,16 +9,20 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password, t('devise.registrations.edit.current_password') %> 
+    <%= f.label :email, t('devise.registrations.edit.email', default: 'メールアドレス（変更したい場合は新しいアドレスを入力）') %><br />
+    <%= f.email_field :email, autocomplete: "email", value: resource.unconfirmed_email || resource.email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password, t('devise.registrations.edit.current_password') %>
     <i><%= t('devise.registrations.edit.current_password_hint') %></i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit t('devise.registrations.edit.update_button') %>
+    <%= f.submit t('devise.registrations.edit.update_button', default: '更新する') %>
   </div>
 <% end %>
-</br>
-<%= link_to 'メールアドレス変更', new_user_confirmation_path %><br>
+
 </br>
 <%= link_to t('devise.registrations.edit.back'), :back %>
