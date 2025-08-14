@@ -28,7 +28,7 @@ class SearchPostsController < ApplicationController
     if @search_post.update(post_params)
       redirect_to root_path, notice: "投稿を更新しました"
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

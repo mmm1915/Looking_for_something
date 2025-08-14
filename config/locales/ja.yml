@@ -24,26 +24,43 @@ ja:
         status:
           searching: "まだ探している"
           found: "見つけた！"
+        item_name: "探し物"
+        found_place: "見つけた場所"
       user:
         nickname: "ニックネーム"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(再入力)"
     errors:
       models:
         user:
           attributes:
-            current_password:
-              invalid: "が正しくありません"
             nickname:
               blank: "を入力してください。"
               taken: "はすでに使われています。"
             email:
+              blank: "を入力してください。"
+              taken: "はすでに存在します。"
               already_confirmed: "はすでに確認済みです"
-
+            password:
+              blank: "を入力してください。"
+              too_short: "は%{count}文字以上で入力してください。"
+            password_confirmation:
+              confirmation: "とパスワードが一致しません"
+            current_password:
+              invalid: "が正しくありません"
 
   devise:
     failure:
       user:
         already_authenticated: "すでにログインしています。"
-      already_authenticated: "すでにログインしています。"
+        invalid: "メールアドレスまたはパスワードが間違っています"
+        not_found_in_database: "メールアドレスまたはパスワードが間違っています"
+        locked: "アカウントがロックされています"
+        inactive: "アカウントが有効化されていません"
+        unconfirmed: "アカウントの確認が完了していません"
+        timeout: "セッションの有効期限が切れました"
+        last_attempt: "最後のログイン試行に失敗しました。しばらく待ってから再度お試しください"
     sessions:
       new:
         log_in: "ログイン"
@@ -59,11 +76,15 @@ ja:
         didnt_receive_confirmation_instructions: "確認メールを受け取っていませんか？"
         didnt_receive_unlock_instructions: "アカウントロック解除メールを受け取っていませんか？"
         sign_in_with: "%{provider} でログイン"
+      minimum_password_length: "%{count}文字以上"
     passwords:
       new:
         forgot_your_password: "パスワードリセット"
         send_reset_password_instructions: "送信する"
     registrations:
+      new:
+        title: "新規登録"
+        submit: "新規登録"
       edit:
         title: "ユーザー情報編集"
         email: "メールアドレス"
@@ -92,6 +113,9 @@ ja:
       already_confirmed: "はすでに確認済みです"
 
   search_posts:
+    new:
+      title: "何をお探しですか？"
+      submit: "投稿する"
     user_is_searching: "%{nickname}は"
     item_name: "%{item_name}を探しています"
     status: "ステータス"
@@ -104,4 +128,3 @@ ja:
     delete: "削除"
     delete_confirm: "削除してよろしいですか？"
     no_results: "検索結果がありません"
-

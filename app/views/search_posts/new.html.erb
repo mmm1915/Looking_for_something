@@ -1,12 +1,23 @@
-<h3>何をお探しですか？</h3>
+<h3><%= t('search_posts.new.title') %></h3>
 
 <%= form_with model: @search_post, url: search_posts_path, local: true do |f| %>
+  <% if @search_post.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= t('errors.messages.not_saved') %></h2>
+      <ul>
+        <% @search_post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
-    <%= f.label :item_name, "探し物" %><br>
+    <%= f.label :item_name, t('activerecord.attributes.search_post.item_name') %><br>
     <%= f.text_field :item_name %>
   </div>
 
   <div>
-    <%= f.submit "投稿する" %>
+    <%= f.submit t('search_posts.new.submit') %>
   </div>
 <% end %>
