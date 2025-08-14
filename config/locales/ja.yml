@@ -24,6 +24,8 @@ ja:
         status:
           searching: "まだ探している"
           found: "見つけた！"
+        item_name: "探し物"
+        found_place: "見つけた場所"
       user:
         nickname: "ニックネーム"
         email: "メールアドレス"
@@ -111,6 +113,9 @@ ja:
       already_confirmed: "はすでに確認済みです"
 
   search_posts:
+    new:
+      title: "何をお探しですか？"
+      submit: "投稿する"
     user_is_searching: "%{nickname}は"
     item_name: "%{item_name}を探しています"
     status: "ステータス"

@@ -1,6 +1,17 @@
 <h2>見つかりましたか？</h2>
 
 <%= form_with model: @search_post, local: true do |f| %>
+  <% if @search_post.errors.any? %>
+    <div class="alert alert-danger">
+      <h2>保存できませんでした</h2>
+      <ul>
+        <% @search_post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
     <%= f.label :item_name, "探し物" %>
     <%= f.text_field :item_name %>
@@ -8,13 +19,32 @@
 
   <div>
     <%= f.label :status, "ステータス" %>
-    <%= f.select :status, SearchPost.statuses.keys.map { |w| [I18n.t("activerecord.attributes.search_post.status.#{w}"), w] } %>
+    <%= f.select :status, SearchPost.statuses.keys.map { |w| [I18n.t("activerecord.attributes.search_post.status.#{w}"), w] }, {}, { id: "search_post_status" } %>
   </div>
 
   <div>
     <%= f.label :found_place, "見つけた場所" %>
-    <%= f.text_field :found_place %>
+    <%= f.text_field :found_place, id: "search_post_found_place" %>
   </div>
 
   <%= f.submit "更新する" %>
 <% end %>
+
+<script>
+  document.addEventListener("turbo:load", () => {
+    const statusSelect = document.querySelector("#search_post_status");
+    const foundPlaceInput = document.querySelector("#search_post_found_place");
+
+    const toggleFoundPlace = () => {
+      if (statusSelect.value === "found") {
+        foundPlaceInput.disabled = false;
+      } else {
+        foundPlaceInput.disabled = true;
+        foundPlaceInput.value = "";
+      }
+    };
+
+    toggleFoundPlace();
+    statusSelect.addEventListener("change", toggleFoundPlace);
+  });
+</script>
