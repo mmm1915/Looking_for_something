@@ -36,19 +36,19 @@ ja:
         user:
           attributes:
             nickname:
-              blank: "を入力してください。"
-              taken: "はすでに使われています。"
+              blank: "ニックネームを入力してください。"
+              taken: "そのニックネームはすでに使われています。"
             email:
-              blank: "を入力してください。"
-              taken: "はすでに存在します。"
-              already_confirmed: "はすでに確認済みです"
+              blank: "メールアドレスを入力してください。"
+              taken: "登録できませんでした。入力内容をご確認ください。"
+              already_confirmed: "メールアドレスはすでに確認済みです"
             password:
-              blank: "を入力してください。"
-              too_short: "は%{count}文字以上で入力してください。"
+              blank: "パスワードを入力してください。"
+              too_short: "パスワードは%{count}文字以上で入力してください。"
             password_confirmation:
-              confirmation: "とパスワードが一致しません"
+              confirmation: "パスワードが一致しません。"
             current_password:
-              invalid: "が正しくありません"
+              invalid: "現在のパスワードが正しくありません。"
 
   devise:
     failure:
@@ -99,6 +99,7 @@ ja:
         back: "戻る"
         unhappy_text: "アカウントを削除しますか？"
         send_email_button: "メールを送信する"
+        current_password_invalid: "現在のパスワードが正しくありません"
     confirmations:
       new:
         title: "確認メールの送信"
