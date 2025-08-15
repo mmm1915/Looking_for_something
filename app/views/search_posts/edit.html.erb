@@ -31,20 +31,23 @@
 <% end %>
 
 <script>
-  document.addEventListener("turbo:load", () => {
-    const statusSelect = document.querySelector("#search_post_status");
-    const foundPlaceInput = document.querySelector("#search_post_found_place");
+  document.addEventListener("turbo:render", () => {
+  const statusSelect = document.querySelector("#search_post_status");
+  const foundPlaceInput = document.querySelector("#search_post_found_place");
 
-    const toggleFoundPlace = () => {
-      if (statusSelect.value === "found") {
-        foundPlaceInput.disabled = false;
-      } else {
-        foundPlaceInput.disabled = true;
-        foundPlaceInput.value = "";
-      }
-    };
+  if (!statusSelect || !foundPlaceInput) return;
 
-    toggleFoundPlace();
-    statusSelect.addEventListener("change", toggleFoundPlace);
-  });
+  const toggleFoundPlace = () => {
+    if (statusSelect.value === "found") {
+      foundPlaceInput.disabled = false;
+    } else {
+      foundPlaceInput.disabled = true;
+      foundPlaceInput.value = "";
+    }
+  };
+
+  toggleFoundPlace();
+  statusSelect.addEventListener("change", toggleFoundPlace);
+});
 </script>
+</br>

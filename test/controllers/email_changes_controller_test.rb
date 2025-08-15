@@ -13,8 +13,10 @@ class EmailChangesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get update" do
+  test "should update email" do
     patch email_change_path, params: { user: { email: "new_email@example.com" } }
+    @user.reload
+    assert_equal "new_email@example.com", @user.email
     assert_redirected_to root_path
   end
 end

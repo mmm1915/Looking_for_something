@@ -2,6 +2,7 @@ class EmailChangesController < ApplicationController
   before_action :authenticate_user!
 
   def edit
+    @user = current_user
   end
 
   def update
@@ -20,13 +21,9 @@ class EmailChangesController < ApplicationController
       render :edit and return
     end
 
-    current_user.unconfirmed_email = new_email
-    current_user.confirmation_token = nil
-    current_user.confirmation_sent_at = nil
-
-    if current_user.save
-      current_user.send_confirmation_instructions
-      flash[:notice] = "確認メールを新しいメールアドレス宛に送信しました。メール内のリンクをクリックして変更を完了してください。"
+    # 確認メール用のカラムを使わず直接更新
+    if current_user.update(email: new_email)
+      flash[:notice] = "メールアドレスを更新しました"
       redirect_to root_path
     else
       flash.now[:alert] = "保存に失敗しました。もう一度試してください。"

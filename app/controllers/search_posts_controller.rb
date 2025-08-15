@@ -17,7 +17,7 @@ class SearchPostsController < ApplicationController
     if @search_post.save
       redirect_to root_path, notice: "投稿しました"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -53,5 +53,9 @@ class SearchPostsController < ApplicationController
 
   def authorize_user!
     redirect_to search_posts_path, alert: "ログインしてください" unless @search_post.user == current_user
+  end
+
+  def search_post_params
+    params.require(:search_post).permit(:item_name, :status, :found_place)
   end
 end
