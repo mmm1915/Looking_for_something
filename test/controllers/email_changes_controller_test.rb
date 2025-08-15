@@ -6,6 +6,8 @@ class EmailChangesControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:one)
     sign_in @user
+
+    User.any_instance.stubs(:send_confirmation_instructions)
   end
 
   test "should get edit" do

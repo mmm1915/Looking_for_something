@@ -1,7 +1,7 @@
 class SearchPost < ApplicationRecord
   belongs_to :user
 
-  enum status: { searching: 0, found: 1 }
+  enum :status, { searching: 0, found: 1 }
 
   validates :item_name, presence: true
   validate :found_place_presence_if_found
