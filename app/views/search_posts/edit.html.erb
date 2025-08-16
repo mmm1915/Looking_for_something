@@ -1,6 +1,6 @@
 <h2>見つかりましたか？</h2>
 
-<%= form_with model: @search_post, local: true do |f| %>
+<%= form_with model: @search_post do |f| %>
   <% if @search_post.errors.any? %>
     <div class="alert alert-danger">
       <h2>保存できませんでした</h2>
@@ -24,7 +24,10 @@
 
   <div>
     <%= f.label :found_place, "見つけた場所" %>
+    <!-- 入力欄は JS で編集可否を制御 -->
     <%= f.text_field :found_place, id: "search_post_found_place" %>
+    <!-- hidden で常に値を送信 -->
+    <%= f.hidden_field :found_place, id: "search_post_found_place_hidden" %>
   </div>
 
   <%= f.submit "更新する" %>
@@ -32,22 +35,26 @@
 
 <script>
   document.addEventListener("turbo:render", () => {
-  const statusSelect = document.querySelector("#search_post_status");
-  const foundPlaceInput = document.querySelector("#search_post_found_place");
+    const statusSelect = document.querySelector("#search_post_status");
+    const foundPlaceInput = document.querySelector("#search_post_found_place");
+    const foundPlaceHidden = document.querySelector("#search_post_found_place_hidden");
 
-  if (!statusSelect || !foundPlaceInput) return;
+    if (!statusSelect || !foundPlaceInput || !foundPlaceHidden) return;
 
-  const toggleFoundPlace = () => {
-    if (statusSelect.value === "found") {
-      foundPlaceInput.disabled = false;
-    } else {
-      foundPlaceInput.disabled = true;
-      foundPlaceInput.value = "";
-    }
-  };
+    const toggleFoundPlace = () => {
+      if (statusSelect.value === "found") {
+        foundPlaceInput.disabled = false;
+        foundPlaceHidden.value = foundPlaceInput.value;
+      } else {
+        foundPlaceInput.disabled = true;
+        foundPlaceHidden.value = ""; // ← status が "searching" のときは空にする
+      }
+    };
 
-  toggleFoundPlace();
-  statusSelect.addEventListener("change", toggleFoundPlace);
-});
+    toggleFoundPlace();
+    statusSelect.addEventListener("change", toggleFoundPlace);
+    foundPlaceInput.addEventListener("input", () => {
+      foundPlaceHidden.value = foundPlaceInput.value;
+    });
+  });
 </script>
-</br>

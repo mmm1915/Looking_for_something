@@ -1,0 +1,17 @@
+<div id="search_post_<%= search_post.id %>" class="card mb-3 post-card">
+  <div class="card-body">
+    <p><%= t('home.posts.looking_for', nickname: search_post.user.nickname).html_safe %></p>
+    <p><%= t('home.posts.item_name', item_name: search_post.item_name).html_safe %></p>
+
+    <% if search_post.status == "found" %>
+      <p><%= t('home.posts.found_place', found_place: search_post.found_place).html_safe %></p>
+    <% else %>
+      <p><%= t('home.posts.searching') %></p>
+    <% end %>
+
+    <% if current_user == search_post.user %>
+      <%= link_to t('home.posts.edit'), edit_search_post_path(search_post), class: "btn btn-sm btn-primary" %>
+      <%= link_to t('home.posts.delete'), search_post_path(search_post), data: { turbo_method: :delete, turbo_confirm: t('home.posts.delete_confirm') }, class: "btn btn-sm btn-danger" %>
+    <% end %>
+  </div>
+</div>

@@ -1,25 +1,9 @@
 <% if @search_posts.present? %>
   <% @search_posts.each do |post| %>
-    <div class="card mb-3 post-card" >
-      <div class="card-body">
-        <p><%= t('home.posts.looking_for', nickname: post.user.nickname).html_safe %></p>
-        <p><%= t('home.posts.item_name', item_name: post.item_name).html_safe %></p>
-        <% if post.found_place.present? %>
-          <p><%= t('home.posts.found_place', found_place: post.found_place).html_safe %></p>
-        <% else %>
-          <p><%= t('home.posts.searching') %></p>
-        <% end %>
-
-        <% if current_user == post.user %>
-          <%= link_to t('home.posts.edit'), edit_search_post_path(post), class: "btn btn-sm btn-primary" %>
-          <%= link_to t('home.posts.delete'), search_post_path(post),  data: { turbo_method: :delete, turbo_confirm: t('home.posts.delete_confirm') }, class: "btn btn-sm btn-danger" %>
-        <% end %>
-      </div>
-    </div>
+    <%= render post %>
   <% end %>
 
   <%= paginate @search_posts %>
-
 <% else %>
   <p><%= t('home.posts.no_posts') %></p>
 <% end %>

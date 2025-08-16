@@ -25,8 +25,8 @@ class SearchPostsController < ApplicationController
   end
 
   def update
-    if @search_post.update(post_params)
-      redirect_to root_path, notice: "投稿を更新しました"
+    if @search_post.update(search_post_params)
+      redirect_to root_path, notice: t("home.posts.update_success")
     else
       render :edit, status: :unprocessable_entity
     end
